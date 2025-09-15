@@ -8,12 +8,21 @@ document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
   console.log(typeof guess, guess);
 
+  // ANCHOR no number
   if (!guess) {
     console.log('NO GUESS');
     document.querySelector('.message').textContent = 'No number ⛔';
-  } else if (guess === secretNumber) {
+  }
+
+  // ANCHOR correct
+  else if (guess === secretNumber) {
     document.querySelector('.message').textContent = '🎉 Correct number!';
-  } else if (guess > secretNumber) {
+    document.querySelector('body').style.backgroundColor = '#60b347';
+    document.querySelector('.number').style.width = '30rem';
+  }
+
+  // ANCHOR greater
+  else if (guess > secretNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = '👆🏻 Too high...';
       score--;
@@ -23,7 +32,10 @@ document.querySelector('.check').addEventListener('click', function () {
         '😭 You lost the game...';
       document.querySelector('.score').textContent = 0;
     }
-  } else if (guess < secretNumber) {
+  }
+
+  // ANCHOR less
+  else if (guess < secretNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = '👇🏻 Too low...';
       score--;
